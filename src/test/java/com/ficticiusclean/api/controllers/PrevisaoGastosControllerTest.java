@@ -3,7 +3,7 @@ package com.ficticiusclean.api.controllers;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.BDDMockito.given;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -75,12 +75,12 @@ public class PrevisaoGastosControllerTest {
 	
 	@Test
 	@Order(2)
-	@DisplayName("Deve retornar uma lista de previsão de gastos quando solicitar GET /previsao-gastos")
+	@DisplayName("Deve retornar uma lista de previsão de gastos quando solicitar POST /previsao-gastos")
 	public void deveRetornarListaPrevisaoGastos_quandoSolicitarPrevisaoGastos() throws IOException, Exception {
 		ParametrosCalculoDto params = new ParametrosCalculoDto(new BigDecimal(7), new BigDecimal(200), new BigDecimal(400));
 		given(previsaoGastosService.calcularPrevisaoGastos(params)).willReturn(criaListaPrevisaoGastos());
 		
-		MockHttpServletResponse response = mockMvc.perform(get("/previsao-gastos")
+		MockHttpServletResponse response = mockMvc.perform(post("/previsao-gastos")
 				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
 				.content(jsonParamsDto.write(params).getJson())).andReturn().getResponse();
 		
