@@ -31,7 +31,7 @@ O projeto foi desenvolvido com as seguintes tecnologias:
 * **H2 Database**
 * **Swagger 3.0.0**
 
-## :link: Links <a name="-links"/></a>
+## :link: Documentação
 
 - [Documentação - Postman](https://documenter.getpostman.com/view/6022129/UV5afvfd) - Documentação da API REST;
 
